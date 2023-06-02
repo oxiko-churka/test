@@ -1,6 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QPushButton, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit
-
+from instr.py import *
+from final_win.py import *
 
 
 class TestWin(QWidget):
@@ -30,7 +31,11 @@ class TestWin(QWidget):
         self.starttest2 = QPushButton(txt_starttest2)
 
         self.test3 = QLabel(txt_test3)
-        self.starttest3 = QPushButton()
+        self.starttest3 = QPushButton(txt_starttest3)
+        self.hinttest2 = QLineEdit(txt_hinttest2)
+        self.hinttest3 = QLineEdit(txt_hinttest3)
+        self.sendresults = QPushButton(txt_sendresults)
+
         self.h_line = QHBoxLayout()
         self.v_line = QVBoxLayout()
         self.v2_line = QVBoxLayout()
@@ -45,13 +50,18 @@ class TestWin(QWidget):
         self.v2_line.addWidget(txt_timer, alignment = Qt.AlignRight)
         self.v_line.addWidget(txt_starttest2, alignment = Qt.AlignLeft)
         self.v_line.addWidget(txt_test3, alignment = Qt.AlignLeft)
-        self.v_line.addWidget(txt_starttest, alignment = Qt.AlignLeft)
-        self.v_line.addWidget(txt_hinttest1,alignment = Qt.AlignLeft)
+        self.v_line.addWidget(txt_starttest3, alignment = Qt.AlignLeft)
         self.v_line.addWidget(txt_hinttese2, alignment = Qt.AlignLeft)
         self.v_line.addWidget(txt_hinttest3, alignment = Qt.AlignLeft)
         self.v_line.addWidget(txt_sendresults, alignment = Qt.AlignCenter)
 
+        self.h_line.addLayout(v_line)
+        self.h_line.addLayout(v2_line)
+        mw.setLayout(h_line)
     def connects():
-        pass
+        self.btn_next.clicked.connect(self.next_click)
+    def next_click(self):
+        self.hide()
+        self.tw = FinalWin()
     def show():
-        pass
+        mw.show()
